@@ -1,27 +1,45 @@
+# Anwendung:    Barcode Eingabe
+# Autor:        Tom Hente
+# Datum:        22.02.2023
+# Version:      1.1
+
+
 #Liste mit Barcodes
 
 Liste_Zeichenkette_Strichcode = []
+Liste_Zeichenkette_Ausgabe = []
 
 #Eingabe Barcode
 
 Barcode_Eingabe = str(input("Geben sie den Barcode ein!"))
 
-if Barcode_Eingabe.isalpha():
+#Bedingung Barcode Eingabe 
 
-    print("Fehlercode 1 = String enthält nicht ausschließlich Ziffern")
+if Barcode_Eingabe.isalpha():                                               #Wenn Buchstaben in der Eingabe enthalten sind
 
-elif Barcode_Eingabe.isdigit():
+    print("Fehlercode 1 = String enthält nicht ausschließlich Ziffern")     #Gebe aus "String enthält nicht ausschließlich"
 
-    print("Die Eingabe ist korrekt und besteht nur aus Ziffern")
-    Liste_Zeichenkette_Strichcode.append(Barcode_Eingabe)
-    print("Der Barcode wurde der Liste hinzugefügt")
+elif Barcode_Eingabe.isdigit():                                             #Wenn nur Zahlen enthalten sind
 
-for s_8 in Liste_Zeichenkette_Strichcode:
+    print("Die Eingabe ist korrekt und besteht nur aus Ziffern")            #Gebe aus die Eingabe ist korrekt
 
-    Nettogewicht = int(s_8[9:14])
-    Bruttogewicht = int(s_8[19:24])
+    Liste_Zeichenkette_Strichcode.append(Barcode_Eingabe)                   #Füge Barcode_Eingabe Liste_Zeichenkette_Strichcode hinzu
 
-    if (Bruttogewicht < Nettogewicht):
+    for s_8 in Liste_Zeichenkette_Strichcode:                               #Gehe Liste_Zeichenkette durch
 
-        print("Fehlercode 2 = Nettogewicht ist größer als Bruttogewicht")
+        Nettogewicht = int(s_8[9:14])                                       #Nettogwicht = int von Stellen 9 bis 14 jedes Objekts
 
+        Bruttogewicht = int(s_8[19:24])                                     #Bruttogewicht = int von Stellen 19 bis 24 jedes Objekts
+
+#Wenn Bruttogewicht < Nettogewicht ist dann
+
+        if (Bruttogewicht < Nettogewicht):                                  
+
+            print("Fehlercode 2 = Nettogewicht ist größer als Bruttogewicht")   #Gebe aus Nettogewicht ist größer als Bruttogewicht
+
+
+#Wenn Bruttogewicht >= Nettogewicht ist
+
+        else: 
+            Liste_Zeichenkette_Ausgabe.append(Barcode_Eingabe)              #Füge Barcode Eingabe Liste Ausgabe hinzu
+            print("Der Barcode wurde der Liste hinzugefügt")                #Gebe aus Barcode wurde Liste hinzugefügt
